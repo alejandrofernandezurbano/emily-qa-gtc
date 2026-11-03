@@ -1,0 +1,68 @@
+{
+  "hu_id": "HU-DEMO-001",
+  "ejecucion_id": "20261103-171018",
+  "modo": "reglas",
+  "resumen": {
+    "APROBADO": 1,
+    "FALLIDO": 1,
+    "NO EJECUTADO": 1
+  },
+  "criterios": [
+    {
+      "id": "CA-01",
+      "texto": "Si nombre, correo válido y edad igual o mayor a 18 son correctos, el registro debe aceptarse y devolver un identificador.",
+      "estado": "NO EJECUTADO",
+      "motivo": "Excluido en esta ejecución (opción --solo).",
+      "casos": []
+    },
+    {
+      "id": "CA-02",
+      "texto": "Si el correo no tiene un formato válido, el registro debe rechazarse con un mensaje de validación comprensible.",
+      "estado": "APROBADO",
+      "motivo": "Todos los casos cumplen el criterio.",
+      "casos": [
+        {
+          "caso_id": "TC-CA-02-1",
+          "descripcion": "Correo sin @",
+          "origen": "reglas",
+          "estado": "APROBADO",
+          "motivo": "",
+          "evidencia": "casos/TC-CA-02-1.json"
+        },
+        {
+          "caso_id": "TC-CA-02-2",
+          "descripcion": "Correo sin dominio",
+          "origen": "reglas",
+          "estado": "APROBADO",
+          "motivo": "",
+          "evidencia": "casos/TC-CA-02-2.json"
+        }
+      ]
+    },
+    {
+      "id": "CA-03",
+      "texto": "Si la edad es menor a 18 años, el registro debe rechazarse y no debe persistirse el cliente.",
+      "estado": "FALLIDO",
+      "motivo": "Al menos un caso incumple el criterio.",
+      "casos": [
+        {
+          "caso_id": "TC-CA-03-1",
+          "descripcion": "Edad justo debajo del límite (17)",
+          "origen": "reglas",
+          "estado": "FALLIDO",
+          "motivo": "[CA-03] persistencia: esperado=False obtenido=True",
+          "evidencia": "casos/TC-CA-03-1.json"
+        },
+        {
+          "caso_id": "TC-CA-03-2",
+          "descripcion": "Edad claramente menor (10)",
+          "origen": "reglas",
+          "estado": "FALLIDO",
+          "motivo": "[CA-03] persistencia: esperado=False obtenido=True",
+          "evidencia": "casos/TC-CA-03-2.json"
+        }
+      ]
+    }
+  ],
+  "advertencias": []
+}

@@ -1,0 +1,140 @@
+{
+  "hu_id": "HU-DEMO-001",
+  "ejecucion_id": "20261103-171018",
+  "modo": "reglas",
+  "contrato": {
+    "ruta_registro": "/clientes",
+    "ruta_consulta": "/clientes",
+    "status_aceptado": 201,
+    "status_rechazado": 422,
+    "campos": [
+      "nombre",
+      "correo",
+      "edad"
+    ]
+  },
+  "criterios": [
+    {
+      "id": "CA-01",
+      "texto": "Si nombre, correo válido y edad igual o mayor a 18 son correctos, el registro debe aceptarse y devolver un identificador.\n"
+    },
+    {
+      "id": "CA-02",
+      "texto": "Si el correo no tiene un formato válido, el registro debe rechazarse con un mensaje de validación comprensible.\n"
+    },
+    {
+      "id": "CA-03",
+      "texto": "Si la edad es menor a 18 años, el registro debe rechazarse y no debe persistirse el cliente.\n"
+    }
+  ],
+  "casos": [
+    {
+      "id": "TC-CA-01-1",
+      "criterio_id": "CA-01",
+      "descripcion": "Registro válido con edad límite (18)",
+      "origen": "reglas",
+      "datos": {
+        "nombre": "Ana Pérez",
+        "correo": "ana.1.171018@ejemplo.com",
+        "edad": 18
+      },
+      "esperado": {
+        "status": 201,
+        "campo_en_respuesta": "id",
+        "mensaje_menciona": null,
+        "persistido": true
+      }
+    },
+    {
+      "id": "TC-CA-01-2",
+      "criterio_id": "CA-01",
+      "descripcion": "Registro válido con edad típica (35)",
+      "origen": "reglas",
+      "datos": {
+        "nombre": "Ana Pérez",
+        "correo": "ana.2.171018@ejemplo.com",
+        "edad": 35
+      },
+      "esperado": {
+        "status": 201,
+        "campo_en_respuesta": "id",
+        "mensaje_menciona": null,
+        "persistido": true
+      }
+    },
+    {
+      "id": "TC-CA-02-1",
+      "criterio_id": "CA-02",
+      "descripcion": "Correo sin @",
+      "origen": "reglas",
+      "datos": {
+        "nombre": "Luis Gómez",
+        "correo": "luis.171018.ejemplo.com",
+        "edad": 30
+      },
+      "esperado": {
+        "status": 422,
+        "campo_en_respuesta": null,
+        "mensaje_menciona": [
+          "correo"
+        ],
+        "persistido": null
+      }
+    },
+    {
+      "id": "TC-CA-02-2",
+      "criterio_id": "CA-02",
+      "descripcion": "Correo sin dominio",
+      "origen": "reglas",
+      "datos": {
+        "nombre": "Luis Gómez",
+        "correo": "luis.171018@",
+        "edad": 30
+      },
+      "esperado": {
+        "status": 422,
+        "campo_en_respuesta": null,
+        "mensaje_menciona": [
+          "correo"
+        ],
+        "persistido": null
+      }
+    },
+    {
+      "id": "TC-CA-03-1",
+      "criterio_id": "CA-03",
+      "descripcion": "Edad justo debajo del límite (17)",
+      "origen": "reglas",
+      "datos": {
+        "nombre": "Ana Pérez",
+        "correo": "ana.3.171018@ejemplo.com",
+        "edad": 17
+      },
+      "esperado": {
+        "status": 422,
+        "campo_en_respuesta": null,
+        "mensaje_menciona": null,
+        "persistido": false
+      }
+    },
+    {
+      "id": "TC-CA-03-2",
+      "criterio_id": "CA-03",
+      "descripcion": "Edad claramente menor (10)",
+      "origen": "reglas",
+      "datos": {
+        "nombre": "Ana Pérez",
+        "correo": "ana.4.171018@ejemplo.com",
+        "edad": 10
+      },
+      "esperado": {
+        "status": 422,
+        "campo_en_respuesta": null,
+        "mensaje_menciona": null,
+        "persistido": false
+      }
+    }
+  ],
+  "criterios_sin_casos": {},
+  "advertencias": []
+}

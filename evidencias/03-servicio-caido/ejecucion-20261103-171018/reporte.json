@@ -1,0 +1,85 @@
+{
+  "hu_id": "HU-DEMO-001",
+  "ejecucion_id": "20261103-171018",
+  "modo": "reglas",
+  "resumen": {
+    "APROBADO": 0,
+    "FALLIDO": 0,
+    "NO EJECUTADO": 3
+  },
+  "criterios": [
+    {
+      "id": "CA-01",
+      "texto": "Si nombre, correo válido y edad igual o mayor a 18 son correctos, el registro debe aceptarse y devolver un identificador.",
+      "estado": "NO EJECUTADO",
+      "motivo": "Ningún caso pudo ejecutarse: El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+      "casos": [
+        {
+          "caso_id": "TC-CA-01-1",
+          "descripcion": "Registro válido con edad límite (18)",
+          "origen": "reglas",
+          "estado": "NO EJECUTADO",
+          "motivo": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+          "evidencia": null
+        },
+        {
+          "caso_id": "TC-CA-01-2",
+          "descripcion": "Registro válido con edad típica (35)",
+          "origen": "reglas",
+          "estado": "NO EJECUTADO",
+          "motivo": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+          "evidencia": null
+        }
+      ]
+    },
+    {
+      "id": "CA-02",
+      "texto": "Si el correo no tiene un formato válido, el registro debe rechazarse con un mensaje de validación comprensible.",
+      "estado": "NO EJECUTADO",
+      "motivo": "Ningún caso pudo ejecutarse: El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+      "casos": [
+        {
+          "caso_id": "TC-CA-02-1",
+          "descripcion": "Correo sin @",
+          "origen": "reglas",
+          "estado": "NO EJECUTADO",
+          "motivo": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+          "evidencia": null
+        },
+        {
+          "caso_id": "TC-CA-02-2",
+          "descripcion": "Correo sin dominio",
+          "origen": "reglas",
+          "estado": "NO EJECUTADO",
+          "motivo": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+          "evidencia": null
+        }
+      ]
+    },
+    {
+      "id": "CA-03",
+      "texto": "Si la edad es menor a 18 años, el registro debe rechazarse y no debe persistirse el cliente.",
+      "estado": "NO EJECUTADO",
+      "motivo": "Ningún caso pudo ejecutarse: El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+      "casos": [
+        {
+          "caso_id": "TC-CA-03-1",
+          "descripcion": "Edad justo debajo del límite (17)",
+          "origen": "reglas",
+          "estado": "NO EJECUTADO",
+          "motivo": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+          "evidencia": null
+        },
+        {
+          "caso_id": "TC-CA-03-2",
+          "descripcion": "Edad claramente menor (10)",
+          "origen": "reglas",
+          "estado": "NO EJECUTADO",
+          "motivo": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)",
+          "evidencia": null
+        }
+      ]
+    }
+  ],
+  "advertencias": []
+}

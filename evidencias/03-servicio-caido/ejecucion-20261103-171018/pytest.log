@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/user/emily-qa/.venv/bin/python
+rootdir: /home/user/emily-qa
+configfile: pytest.ini
+plugins: anyio-4.16.0
+collecting ... collected 6 items
+
+qa_runner/test_plan.py::test_caso[TC-CA-01-1] SKIPPED (El servicio n...) [ 16%]
+qa_runner/test_plan.py::test_caso[TC-CA-01-2] SKIPPED (El servicio n...) [ 33%]
+qa_runner/test_plan.py::test_caso[TC-CA-02-1] SKIPPED (El servicio n...) [ 50%]
+qa_runner/test_plan.py::test_caso[TC-CA-02-2] SKIPPED (El servicio n...) [ 66%]
+qa_runner/test_plan.py::test_caso[TC-CA-03-1] SKIPPED (El servicio n...) [ 83%]
+qa_runner/test_plan.py::test_caso[TC-CA-03-2] SKIPPED (El servicio n...) [100%]
+
+- generated xml file: /home/user/emily-qa/evidencias/03-servicio-caido/ejecucion-20261103-171018/junit.xml -
+=========================== short test summary info ============================
+SKIPPED [6] qa_runner/test_plan.py:30: El servicio no respondió (ConnectError: [Errno 111] Connection refused)
+============================== 6 skipped in 0.06s ==============================

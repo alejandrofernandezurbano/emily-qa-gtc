@@ -1,0 +1,38 @@
+{
+  "TC-CA-01-1": {
+    "criterio_id": "CA-01",
+    "resultado_pytest": "skipped",
+    "fase": "call",
+    "detalle": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)"
+  },
+  "TC-CA-01-2": {
+    "criterio_id": "CA-01",
+    "resultado_pytest": "skipped",
+    "fase": "call",
+    "detalle": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)"
+  },
+  "TC-CA-02-1": {
+    "criterio_id": "CA-02",
+    "resultado_pytest": "skipped",
+    "fase": "call",
+    "detalle": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)"
+  },
+  "TC-CA-02-2": {
+    "criterio_id": "CA-02",
+    "resultado_pytest": "skipped",
+    "fase": "call",
+    "detalle": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)"
+  },
+  "TC-CA-03-1": {
+    "criterio_id": "CA-03",
+    "resultado_pytest": "skipped",
+    "fase": "call",
+    "detalle": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)"
+  },
+  "TC-CA-03-2": {
+    "criterio_id": "CA-03",
+    "resultado_pytest": "skipped",
+    "fase": "call",
+    "detalle": "El servicio no respondió (ConnectError: [Errno 111] Connection refused)"
+  }
+}

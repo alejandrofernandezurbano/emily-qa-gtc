@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="6" time="0.240" timestamp="2026-11-03T17:10:14.508709+00:00" hostname="vm"><testcase classname="qa_runner.test_plan" name="test_caso[TC-CA-01-1]" file="qa_runner/test_plan.py" line="21" time="0.168"><properties><property name="caso_id" value="TC-CA-01-1" /><property name="criterio_id" value="CA-01" /></properties></testcase><testcase classname="qa_runner.test_plan" name="test_caso[TC-CA-01-2]" file="qa_runner/test_plan.py" line="21" time="0.008"><properties><property name="caso_id" value="TC-CA-01-2" /><property name="criterio_id" value="CA-01" /></properties></testcase><testcase classname="qa_runner.test_plan" name="test_caso[TC-CA-02-1]" file="qa_runner/test_plan.py" line="21" time="0.004"><properties><property name="caso_id" value="TC-CA-02-1" /><property name="criterio_id" value="CA-02" /></properties></testcase><testcase classname="qa_runner.test_plan" name="test_caso[TC-CA-02-2]" file="qa_runner/test_plan.py" line="21" time="0.004"><properties><property name="caso_id" value="TC-CA-02-2" /><property name="criterio_id" value="CA-02" /></properties></testcase><testcase classname="qa_runner.test_plan" name="test_caso[TC-CA-03-1]" file="qa_runner/test_plan.py" line="21" time="0.007"><properties><property name="caso_id" value="TC-CA-03-1" /><property name="criterio_id" value="CA-03" /></properties><failure message="AssertionError: [CA-03] persistencia: esperado=False obtenido=True&#10;assert not [{'nombre': 'persistencia', 'esperado': False, 'obtenido': True, 'ok': False}]">caso = CasoPrueba(id='TC-CA-03-1', criterio_id='CA-03', descripcion='Edad justo debajo del límite (17)', origen='reglas', dat...plo.com', 'edad': 17}, esperado=Esperado(status=422, campo_en_respuesta=None, mensaje_menciona=None, persistido=False))
+plan = PlanPruebas(hu_id='HU-DEMO-001', ejecucion_id='20261103-171014', modo='reglas', contrato=Contrato(ruta_registro='/clie...atus=422, campo_en_respuesta=None, mensaje_menciona=None, persistido=False))], criterios_sin_casos={}, advertencias=[])
+http = &lt;starlette.testclient.TestClient object at 0x7f7984775a90&gt;
+carpeta_evidencias = PosixPath('/home/user/emily-qa/evidencias/01-referencia/ejecucion-20261103-171014/casos')
+record_property = &lt;function record_property.&lt;locals&gt;.append_property at 0x7f7984468900&gt;
+
+    @pytest.mark.parametrize("caso", _PLAN.casos, ids=[c.id for c in _PLAN.casos])
+    def test_caso(caso, plan, http, carpeta_evidencias, record_property):
+        record_property("caso_id", caso.id)
+        record_property("criterio_id", caso.criterio_id)
+    
+        try:
+            evidencia = ejecutar_caso(caso, http, plan.contrato)
+        except httpx.TransportError as e:
+            pytest.skip(f"El servicio no respondió ({e.__class__.__name__}: {e})")
+        except Exception as e:  # error de la propia herramienta, no del sistema bajo prueba
+            pytest.skip(f"Error interno de Emily QA ({e.__class__.__name__}: {e})")
+    
+        archivo = carpeta_evidencias / f"{caso.id}.json"
+        archivo.write_text(json.dumps(evidencia, indent=2, ensure_ascii=False), encoding="utf-8")
+    
+        fallidas = [v for v in evidencia["verificaciones"] if not v["ok"]]
+&gt;       assert not fallidas, f"[{caso.criterio_id}] " + "; ".join(
+            f"{v['nombre']}: esperado={v['esperado']!r} obtenido={v['obtenido']!r}" for v in fallidas
+        )
+E       AssertionError: [CA-03] persistencia: esperado=False obtenido=True
+E       assert not [{'nombre': 'persistencia', 'esperado': False, 'obtenido': True, 'ok': False}]
+
+qa_runner/test_plan.py:38: AssertionError</failure></testcase><testcase classname="qa_runner.test_plan" name="test_caso[TC-CA-03-2]" file="qa_runner/test_plan.py" line="21" time="0.010"><properties><property name="caso_id" value="TC-CA-03-2" /><property name="criterio_id" value="CA-03" /></properties><failure message="AssertionError: [CA-03] persistencia: esperado=False obtenido=True&#10;assert not [{'nombre': 'persistencia', 'esperado': False, 'obtenido': True, 'ok': False}]">caso = CasoPrueba(id='TC-CA-03-2', criterio_id='CA-03', descripcion='Edad claramente menor (10)', origen='reglas', datos={'no...plo.com', 'edad': 10}, esperado=Esperado(status=422, campo_en_respuesta=None, mensaje_menciona=None, persistido=False))
+plan = PlanPruebas(hu_id='HU-DEMO-001', ejecucion_id='20261103-171014', modo='reglas', contrato=Contrato(ruta_registro='/clie...atus=422, campo_en_respuesta=None, mensaje_menciona=None, persistido=False))], criterios_sin_casos={}, advertencias=[])
+http = &lt;starlette.testclient.TestClient object at 0x7f7984775a90&gt;
+carpeta_evidencias = PosixPath('/home/user/emily-qa/evidencias/01-referencia/ejecucion-20261103-171014/casos')
+record_property = &lt;function record_property.&lt;locals&gt;.append_property at 0x7f79844680e0&gt;
+
+    @pytest.mark.parametrize("caso", _PLAN.casos, ids=[c.id for c in _PLAN.casos])
+    def test_caso(caso, plan, http, carpeta_evidencias, record_property):
+        record_property("caso_id", caso.id)
+        record_property("criterio_id", caso.criterio_id)
+    
+        try:
+            evidencia = ejecutar_caso(caso, http, plan.contrato)
+        except httpx.TransportError as e:
+            pytest.skip(f"El servicio no respondió ({e.__class__.__name__}: {e})")
+        except Exception as e:  # error de la propia herramienta, no del sistema bajo prueba
+            pytest.skip(f"Error interno de Emily QA ({e.__class__.__name__}: {e})")
+    
+        archivo = carpeta_evidencias / f"{caso.id}.json"
+        archivo.write_text(json.dumps(evidencia, indent=2, ensure_ascii=False), encoding="utf-8")
+    
+        fallidas = [v for v in evidencia["verificaciones"] if not v["ok"]]
+&gt;       assert not fallidas, f"[{caso.criterio_id}] " + "; ".join(
+            f"{v['nombre']}: esperado={v['esperado']!r} obtenido={v['obtenido']!r}" for v in fallidas
+        )
+E       AssertionError: [CA-03] persistencia: esperado=False obtenido=True
+E       assert not [{'nombre': 'persistencia', 'esperado': False, 'obtenido': True, 'ok': False}]
+
+qa_runner/test_plan.py:38: AssertionError</failure></testcase></testsuite></testsuites>

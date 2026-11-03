@@ -1,0 +1,64 @@
+[
+  {
+    "id": "DEF-001",
+    "hu_id": "HU-DEMO-001",
+    "criterio_id": "CA-03",
+    "criterio": "Si la edad es menor a 18 años, el registro debe rechazarse y no debe persistirse el cliente.",
+    "caso_id": "TC-CA-03-1",
+    "titulo": "CA-03 incumplido: Edad justo debajo del límite (17)",
+    "pasos_reproduccion": [
+      "POST /clientes {\"nombre\": \"Ana Pérez\", \"correo\": \"ana.3.171014@ejemplo.com\", \"edad\": 17}",
+      "GET /clientes {\"correo\": \"ana.3.171014@ejemplo.com\"}"
+    ],
+    "respuesta_api": {
+      "status": 422,
+      "cuerpo": {
+        "error": "validacion",
+        "mensajes": [
+          "El cliente debe ser mayor de edad (mínimo 18 años, recibido 17)."
+        ]
+      }
+    },
+    "verificaciones_fallidas": [
+      {
+        "nombre": "persistencia",
+        "esperado": false,
+        "obtenido": true,
+        "ok": false
+      }
+    ],
+    "evidencia": "casos/TC-CA-03-1.json",
+    "estado": "pendiente_revision_humana"
+  },
+  {
+    "id": "DEF-002",
+    "hu_id": "HU-DEMO-001",
+    "criterio_id": "CA-03",
+    "criterio": "Si la edad es menor a 18 años, el registro debe rechazarse y no debe persistirse el cliente.",
+    "caso_id": "TC-CA-03-2",
+    "titulo": "CA-03 incumplido: Edad claramente menor (10)",
+    "pasos_reproduccion": [
+      "POST /clientes {\"nombre\": \"Ana Pérez\", \"correo\": \"ana.4.171014@ejemplo.com\", \"edad\": 10}",
+      "GET /clientes {\"correo\": \"ana.4.171014@ejemplo.com\"}"
+    ],
+    "respuesta_api": {
+      "status": 422,
+      "cuerpo": {
+        "error": "validacion",
+        "mensajes": [
+          "El cliente debe ser mayor de edad (mínimo 18 años, recibido 10)."
+        ]
+      }
+    },
+    "verificaciones_fallidas": [
+      {
+        "nombre": "persistencia",
+        "esperado": false,
+        "obtenido": true,
+        "ok": false
+      }
+    ],
+    "evidencia": "casos/TC-CA-03-2.json",
+    "estado": "pendiente_revision_humana"
+  }
+]

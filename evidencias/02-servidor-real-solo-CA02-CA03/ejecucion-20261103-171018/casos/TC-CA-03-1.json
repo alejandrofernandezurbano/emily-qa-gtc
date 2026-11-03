@@ -1,0 +1,56 @@
+{
+  "caso_id": "TC-CA-03-1",
+  "criterio_id": "CA-03",
+  "descripcion": "Edad justo debajo del límite (17)",
+  "origen": "reglas",
+  "duracion_ms": 4.6,
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/clientes",
+      "cuerpo_enviado": {
+        "nombre": "Ana Pérez",
+        "correo": "ana.3.171018@ejemplo.com",
+        "edad": 17
+      },
+      "status": 422,
+      "respuesta": {
+        "error": "validacion",
+        "mensajes": [
+          "El cliente debe ser mayor de edad (mínimo 18 años, recibido 17)."
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "ruta": "/clientes",
+      "cuerpo_enviado": {
+        "correo": "ana.3.171018@ejemplo.com"
+      },
+      "status": 200,
+      "respuesta": [
+        {
+          "id": "c2f0cc1b-8ba5-472b-a933-f8f078441b90",
+          "nombre": "Ana Pérez",
+          "correo": "ana.3.171018@ejemplo.com",
+          "edad": 17
+        }
+      ]
+    }
+  ],
+  "verificaciones": [
+    {
+      "nombre": "status_http",
+      "esperado": 422,
+      "obtenido": 422,
+      "ok": true
+    },
+    {
+      "nombre": "persistencia",
+      "esperado": false,
+      "obtenido": true,
+      "ok": false
+    }
+  ],
+  "ok": false
+}

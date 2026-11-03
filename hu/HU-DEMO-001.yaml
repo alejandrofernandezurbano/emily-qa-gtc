@@ -1,0 +1,31 @@
+# Entrada de Emily QA: historia de usuario + criterios de aceptación.
+# El bloque "contrato" son los SUPUESTOS explícitos sobre la API bajo prueba
+# (qué significa "aceptar" y "rechazar" en términos HTTP). Se declaran aquí
+# para que el agente no los invente.
+
+id: HU-DEMO-001
+titulo: Validación de registro de clientes
+descripcion: >
+  Como usuario administrativo, quiero registrar un cliente desde un formulario
+  para mantener un directorio confiable de clientes.
+
+contrato:
+  ruta_registro: /clientes          # POST con JSON {nombre, correo, edad}
+  ruta_consulta: /clientes          # GET /clientes?correo=... (verifica persistencia)
+  status_aceptado: 201              # "el registro debe aceptarse"
+  status_rechazado: 422             # "el registro debe rechazarse"
+  campos: [nombre, correo, edad]
+
+criterios:
+  - id: CA-01
+    texto: >
+      Si nombre, correo válido y edad igual o mayor a 18 son correctos,
+      el registro debe aceptarse y devolver un identificador.
+  - id: CA-02
+    texto: >
+      Si el correo no tiene un formato válido, el registro debe rechazarse
+      con un mensaje de validación comprensible.
+  - id: CA-03
+    texto: >
+      Si la edad es menor a 18 años, el registro debe rechazarse y no debe
+      persistirse el cliente.

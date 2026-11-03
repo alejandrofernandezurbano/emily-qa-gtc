@@ -1,0 +1,42 @@
+{
+  "caso_id": "TC-CA-02-2",
+  "criterio_id": "CA-02",
+  "descripcion": "Correo sin dominio",
+  "origen": "reglas",
+  "duracion_ms": 3.3,
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/clientes",
+      "cuerpo_enviado": {
+        "nombre": "Luis Gómez",
+        "correo": "luis.171014@",
+        "edad": 30
+      },
+      "status": 422,
+      "respuesta": {
+        "error": "validacion",
+        "mensajes": [
+          "El correo 'luis.171014@' no tiene un formato válido. Ejemplo: nombre@dominio.com"
+        ]
+      }
+    }
+  ],
+  "verificaciones": [
+    {
+      "nombre": "status_http",
+      "esperado": 422,
+      "obtenido": 422,
+      "ok": true
+    },
+    {
+      "nombre": "mensaje_comprensible",
+      "esperado": "menciona alguno de ['correo']",
+      "obtenido": [
+        "El correo 'luis.171014@' no tiene un formato válido. Ejemplo: nombre@dominio.com"
+      ],
+      "ok": true
+    }
+  ],
+  "ok": true
+}

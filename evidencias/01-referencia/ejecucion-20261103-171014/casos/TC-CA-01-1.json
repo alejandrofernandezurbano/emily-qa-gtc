@@ -1,0 +1,62 @@
+{
+  "caso_id": "TC-CA-01-1",
+  "criterio_id": "CA-01",
+  "descripcion": "Registro válido con edad límite (18)",
+  "origen": "reglas",
+  "duracion_ms": 9.5,
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/clientes",
+      "cuerpo_enviado": {
+        "nombre": "Ana Pérez",
+        "correo": "ana.1.171014@ejemplo.com",
+        "edad": 18
+      },
+      "status": 201,
+      "respuesta": {
+        "id": "b480e0b6-6ef2-4f1f-acb5-fc4d0a60bd11",
+        "nombre": "Ana Pérez",
+        "correo": "ana.1.171014@ejemplo.com",
+        "edad": 18
+      }
+    },
+    {
+      "metodo": "GET",
+      "ruta": "/clientes",
+      "cuerpo_enviado": {
+        "correo": "ana.1.171014@ejemplo.com"
+      },
+      "status": 200,
+      "respuesta": [
+        {
+          "id": "b480e0b6-6ef2-4f1f-acb5-fc4d0a60bd11",
+          "nombre": "Ana Pérez",
+          "correo": "ana.1.171014@ejemplo.com",
+          "edad": 18
+        }
+      ]
+    }
+  ],
+  "verificaciones": [
+    {
+      "nombre": "status_http",
+      "esperado": 201,
+      "obtenido": 201,
+      "ok": true
+    },
+    {
+      "nombre": "respuesta_tiene_id",
+      "esperado": "valor no vacío",
+      "obtenido": "b480e0b6-6ef2-4f1f-acb5-fc4d0a60bd11",
+      "ok": true
+    },
+    {
+      "nombre": "persistencia",
+      "esperado": true,
+      "obtenido": true,
+      "ok": true
+    }
+  ],
+  "ok": true
+}

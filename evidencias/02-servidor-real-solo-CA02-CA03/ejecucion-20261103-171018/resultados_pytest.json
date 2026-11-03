@@ -1,0 +1,26 @@
+{
+  "TC-CA-02-1": {
+    "criterio_id": "CA-02",
+    "resultado_pytest": "passed",
+    "fase": "call",
+    "detalle": ""
+  },
+  "TC-CA-02-2": {
+    "criterio_id": "CA-02",
+    "resultado_pytest": "passed",
+    "fase": "call",
+    "detalle": ""
+  },
+  "TC-CA-03-1": {
+    "criterio_id": "CA-03",
+    "resultado_pytest": "failed",
+    "fase": "call",
+    "detalle": "[CA-03] persistencia: esperado=False obtenido=True"
+  },
+  "TC-CA-03-2": {
+    "criterio_id": "CA-03",
+    "resultado_pytest": "failed",
+    "fase": "call",
+    "detalle": "[CA-03] persistencia: esperado=False obtenido=True"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "caso_id": "TC-CA-01-2",
+  "criterio_id": "CA-01",
+  "descripcion": "Registro válido con edad típica (35)",
+  "origen": "reglas",
+  "duracion_ms": 7.4,
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/clientes",
+      "cuerpo_enviado": {
+        "nombre": "Ana Pérez",
+        "correo": "ana.2.171014@ejemplo.com",
+        "edad": 35
+      },
+      "status": 201,
+      "respuesta": {
+        "id": "c80c41f6-e4c7-447c-a92f-d501345c9e27",
+        "nombre": "Ana Pérez",
+        "correo": "ana.2.171014@ejemplo.com",
+        "edad": 35
+      }
+    },
+    {
+      "metodo": "GET",
+      "ruta": "/clientes",
+      "cuerpo_enviado": {
+        "correo": "ana.2.171014@ejemplo.com"
+      },
+      "status": 200,
+      "respuesta": [
+        {
+          "id": "c80c41f6-e4c7-447c-a92f-d501345c9e27",
+          "nombre": "Ana Pérez",
+          "correo": "ana.2.171014@ejemplo.com",
+          "edad": 35
+        }
+      ]
+    }
+  ],
+  "verificaciones": [
+    {
+      "nombre": "status_http",
+      "esperado": 201,
+      "obtenido": 201,
+      "ok": true
+    },
+    {
+      "nombre": "respuesta_tiene_id",
+      "esperado": "valor no vacío",
+      "obtenido": "c80c41f6-e4c7-447c-a92f-d501345c9e27",
+      "ok": true
+    },
+    {
+      "nombre": "persistencia",
+      "esperado": true,
+      "obtenido": true,
+      "ok": true
+    }
+  ],
+  "ok": true
+}
