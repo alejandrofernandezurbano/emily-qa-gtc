@@ -16,11 +16,13 @@ no ejecutado) y una lista de defectos listos para revisión humana.
 Requisitos: Python 3.10 o superior.
 
 ```bash
+git clone https://github.com/alejandrofernandezurbano/emily-qa-gtc
+cd emily-qa-gtc
 python -m venv .venv
 # Windows (PowerShell): Set-ExecutionPolicy -Scope Process Bypass ; .venv\Scripts\Activate.ps1
 # Windows (cmd):        .venv\Scripts\activate.bat
 # Linux/Mac:            source .venv/bin/activate
-pip install -r requirements.txt
+.venv\Scripts\python.exe -m pip install -r requirements.txt
 
 python -m emily_qa          # comando único: genera, ejecuta y reporta
 ```
